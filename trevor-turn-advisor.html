@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trevor — Turn Advisor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #e8efe6;
+      --bg-deep: #d5e0d2;
+      --ink: #142018;
+      --ink-soft: #3d4f42;
+      --muted: #5e7164;
+      --card: #f4f7f2;
+      --stroke: #b7c7b8;
+      --accent: #1f6b45;
+      --accent-hot: #9b2f1a;
+      --accent-cool: #1a5a7a;
+      --accent-gold: #8a6b1f;
+      --shadow: 0 1px 0 rgba(20, 32, 24, 0.06);
+      --radius: 14px;
+      --font-display: "Bricolage Grotesque", Georgia, serif;
+      --font-body: Manrope, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% -10%, #cfe3d4 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 100% 0%, #d9e4ec 0%, transparent 50%),
+        var(--bg);
+      line-height: 1.45;
+    }
+
+    .wrap {
+      width: min(920px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+    }
+
+    header.hero {
+      margin-bottom: 1.75rem;
+    }
+    header.hero h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 2.85rem);
+      letter-spacing: -0.03em;
+      margin: 0 0 0.35rem;
+      line-height: 1.05;
+    }
+    header.hero p {
+      margin: 0;
+      color: var(--ink-soft);
+      max-width: 38rem;
+      font-size: 1.05rem;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.9rem;
+    }
+    .chip {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.28rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: var(--card);
+      color: var(--ink-soft);
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.25rem 1.3rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem;
+    }
+    .panel h2 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0 0 0.35rem;
+      letter-spacing: -0.02em;
+    }
+    .panel .sub {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin: 0 0 1rem;
+    }
+
+    .step-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .step-pill {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      color: var(--muted);
+      background: transparent;
+    }
+    .step-pill.on {
+      background: var(--ink);
+      color: #f4f7f2;
+      border-color: var(--ink);
+    }
+    .step-pill.done {
+      background: var(--bg-deep);
+      color: var(--ink-soft);
+    }
+
+    .spectrum {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.55rem;
+    }
+    @media (max-width: 720px) {
+      .spectrum { grid-template-columns: 1fr 1fr; }
+      .spectrum .intent:last-child { grid-column: 1 / -1; }
+    }
+
+    button.intent {
+      appearance: none;
+      text-align: left;
+      border: 1.5px solid var(--stroke);
+      background: #fff;
+      border-radius: 12px;
+      padding: 0.9rem 0.85rem;
+      cursor: pointer;
+      transition: border-color 0.15s, transform 0.12s, background 0.15s;
+      min-height: 7.5rem;
+      font: inherit;
+      color: inherit;
+    }
+    button.intent:hover { transform: translateY(-1px); border-color: #8aa390; }
+    button.intent.selected {
+      border-color: var(--accent);
+      background: #eaf4ee;
+      outline: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      outline-offset: 1px;
+    }
+    button.intent[data-tone="aggressive"].selected {
+      border-color: var(--accent-hot);
+      background: #f8ebe7;
+      outline-color: color-mix(in srgb, var(--accent-hot) 35%, transparent);
+    }
+    button.intent[data-tone="control"].selected {
+      border-color: var(--accent-gold);
+      background: #f6f1e2;
+      outline-color: color-mix(in srgb, var(--accent-gold) 35%, transparent);
+    }
+    button.intent[data-tone="support"].selected,
+    button.intent[data-tone="helpful"].selected {
+      border-color: var(--accent-cool);
+      background: #e8f1f6;
+      outline-color: color-mix(in srgb, var(--accent-cool) 35%, transparent);
+    }
+    .intent .label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .intent .blurb {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: block;
+    }
+    .spectrum-legend {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.65rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .situation {
+      display: grid;
+      gap: 0.65rem;
+    }
+    .q {
+      display: grid;
+      gap: 0.45rem;
+    }
+    .q-label {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    button.opt {
+      appearance: none;
+      font: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--stroke);
+      background: #fff;
+      color: var(--ink-soft);
+      cursor: pointer;
+    }
+    button.opt:hover { border-color: #8aa390; }
+    button.opt.selected {
+      background: var(--ink);
+      color: #f4f7f2;
+      border-color: var(--ink);
+    }
+
+    .nav-row {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 1.15rem;
+      flex-wrap: wrap;
+    }
+    button.btn {
+      appearance: none;
+      font: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.7rem 1.15rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+    }
+    button.btn.primary {
+      background: var(--accent);
+      color: #f4faf6;
+    }
+    button.btn.primary:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    button.btn.ghost {
+      background: transparent;
+      color: var(--ink-soft);
+      border: 1.5px solid var(--stroke);
+    }
+
+    .plan-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .plan-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .tone-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: var(--bg-deep);
+      color: var(--ink-soft);
+    }
+
+    .steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.55rem;
+    }
+    .steps li {
+      display: grid;
+      grid-template-columns: 5.5rem 1fr;
+      gap: 0.75rem;
+      padding: 0.75rem 0.85rem;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid var(--stroke);
+    }
+    @media (max-width: 520px) {
+      .steps li { grid-template-columns: 1fr; }
+    }
+    .budget {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 0.15rem;
+    }
+    .budget.ba { color: var(--accent-hot); }
+    .budget.move { color: var(--accent-cool); }
+    .budget.free { color: var(--accent-gold); }
+    .budget.warn { color: #7a3e12; }
+    .step-body strong { font-weight: 700; }
+    .step-body .detail {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .alts {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+    .alt {
+      padding: 0.7rem 0.85rem;
+      border-left: 3px solid var(--stroke);
+      background: #fff;
+      border-radius: 0 10px 10px 0;
+    }
+    .alt h3 {
+      margin: 0 0 0.2rem;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+    .alt p {
+      margin: 0;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .warn {
+      margin-top: 1rem;
+      padding: 0.75rem 0.9rem;
+      border-radius: 10px;
+      background: #f6efe4;
+      border: 1px solid #e0d0b0;
+      font-size: 0.88rem;
+      color: #5a4420;
+    }
+
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    @media (max-width: 560px) {
+      .stats-strip { grid-template-columns: 1fr 1fr; }
+    }
+    .stat {
+      background: #fff;
+      border: 1px solid var(--stroke);
+      border-radius: 10px;
+      padding: 0.55rem 0.65rem;
+    }
+    .stat b {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+    .stat span {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <h1>Trevor Turn Advisor</h1>
+      <p>
+        Pick how you want to play this turn — from all-out aggression to helping the party —
+        then answer a few situation questions. You’ll get a concrete action plan for your
+        Paladin 5 / Barbarian 2.
+      </p>
+      <div class="meta">
+        <span class="chip">AC 17 · HP 48</span>
+        <span class="chip">Longsword +5 / 1d8+2</span>
+        <span class="chip">Spell DC 13</span>
+        <span class="chip">Rage +2 dmg</span>
+      </div>
+    </header>
+
+    <div class="step-bar" id="stepBar" aria-label="Progress">
+      <span class="step-pill on" data-step="1">1 · Intent</span>
+      <span class="step-pill" data-step="2">2 · Situation</span>
+      <span class="step-pill" data-step="3">3 · Your plan</span>
+    </div>
+
+    <!-- STEP 1 -->
+    <section class="panel" id="step1">
+      <h2>How do you want to play this turn?</h2>
+      <p class="sub">Choose a lane. You can still pivot with situation details next.</p>
+      <div class="spectrum" role="listbox" aria-label="Intent">
+        <button type="button" class="intent" data-intent="aggressive" data-tone="aggressive" role="option">
+          <span class="label">Aggressive</span>
+          <span class="blurb">Max damage. Rage, Reckless, smash, smite.</span>
+        </button>
+        <button type="button" class="intent" data-intent="pressure" data-tone="aggressive" role="option">
+          <span class="label">Pressure</span>
+          <span class="blurb">Hit hard and hobble them — Sap, restrain, force saves.</span>
+        </button>
+        <button type="button" class="intent" data-intent="balanced" data-tone="control" role="option">
+          <span class="label">Balanced</span>
+          <span class="blurb">Stay flexible — threaten melee while keeping options open.</span>
+        </button>
+        <button type="button" class="intent" data-intent="support" data-tone="support" role="option">
+          <span class="label">Support</span>
+          <span class="blurb">Protect the line — heal, reposition, peel for allies.</span>
+        </button>
+        <button type="button" class="intent" data-intent="helpful" data-tone="helpful" role="option">
+          <span class="label">Helpful</span>
+          <span class="blurb">Full caretaker mode — stabilize, buff space, stay safe.</span>
+        </button>
+      </div>
+      <div class="spectrum-legend">
+        <span>More aggressive</span>
+        <span>More helpful</span>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn primary" id="toStep2" disabled>Next · Situation</button>
+      </div>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="panel" id="step2" hidden>
+      <h2>What’s the situation?</h2>
+      <p class="sub">These toggle which tools Trevor should reach for.</p>
+      <div class="situation">
+        <div class="q">
+          <div class="q-label">Where are you relative to enemies?</div>
+          <div class="choices" data-key="range">
+            <button type="button" class="opt selected" data-value="melee">In melee</button>
+            <button type="button" class="opt" data-value="near">Near (move in)</button>
+            <button type="button" class="opt" data-value="far">Far / need gap close</button>
+          </div>
+        </div>
+        <div class="q">
+          <div class="q-label">Ally status?</div>
+          <div class="choices" data-key="ally">
+            <button type="button" class="opt selected" data-value="fine">Allies are fine</button>
+            <button type="button" class="opt" data-value="hurt">Ally hurt</button>
+            <button type="button" class="opt" data-value="down">Ally down / critical</button>
+          </div>
+        </div>
+        <div class="q">
+          <div class="q-label">Already raging?</div>
+          <div class="choices" data-key="rage">
+            <button type="button" class="opt selected" data-value="no">No</button>
+            <button type="button" class="opt" data-value="yes">Yes</button>
+          </div>
+        </div>
+        <div class="q">
+          <div class="q-label">Priority target type?</div>
+          <div class="choices" data-key="foe">
+            <button type="button" class="opt selected" data-value="normal">Normal</button>
+            <button type="button" class="opt" data-value="fiend">Fiend / Undead</button>
+            <button type="button" class="opt" data-value="mobile">Skirmisher / runner</button>
+            <button type="button" class="opt" data-value="pack">Pack of foes</button>
+          </div>
+        </div>
+        <div class="q">
+          <div class="q-label">Spell slots left?</div>
+          <div class="choices" data-key="slots">
+            <button type="button" class="opt selected" data-value="yes">Yes</button>
+            <button type="button" class="opt" data-value="low">Low (1 left)</button>
+            <button type="button" class="opt" data-value="no">None / save them</button>
+          </div>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn ghost" id="back1">Back</button>
+        <button type="button" class="btn primary" id="toStep3">Show my plan</button>
+      </div>
+    </section>
+
+    <!-- STEP 3 -->
+    <section class="panel" id="step3" hidden>
+      <div class="plan-header">
+        <h2 class="plan-title" id="planTitle">Your turn</h2>
+        <span class="tone-tag" id="planTone">—</span>
+      </div>
+      <p class="sub" id="planPitch" style="margin-top:-0.35rem"></p>
+      <ol class="steps" id="planSteps"></ol>
+      <div class="alts" id="planAlts"></div>
+      <div class="warn" id="planWarn" hidden></div>
+      <div class="stats-strip">
+        <div class="stat"><b>+5</b><span>Sword attack</span></div>
+        <div class="stat"><b>DC 13</b><span>Saves / CD</span></div>
+        <div class="stat"><b>+2</b><span>Rage damage</span></div>
+        <div class="stat"><b>2d8+</b><span>Divine Smite</span></div>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn ghost" id="back2">Tweak situation</button>
+        <button type="button" class="btn ghost" id="restart">Change intent</button>
+        <button type="button" class="btn primary" id="again">Roll another turn</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const state = {
+      intent: null,
+      range: "melee",
+      ally: "fine",
+      rage: "no",
+      foe: "normal",
+      slots: "yes",
+    };
+
+    const intentMeta = {
+      aggressive: { label: "Aggressive", blurb: "Commit to damage. Magic can wait." },
+      pressure: { label: "Pressure", blurb: "Hurt them and make their turn worse." },
+      balanced: { label: "Balanced", blurb: "Stay dangerous without locking yourself out." },
+      support: { label: "Support", blurb: "Keep the party standing and in position." },
+      helpful: { label: "Helpful", blurb: "Prioritize allies over personal damage." },
+    };
+
+    const step1 = document.getElementById("step1");
+    const step2 = document.getElementById("step2");
+    const step3 = document.getElementById("step3");
+    const toStep2 = document.getElementById("toStep2");
+
+    function setStep(n) {
+      step1.hidden = n !== 1;
+      step2.hidden = n !== 2;
+      step3.hidden = n !== 3;
+      document.querySelectorAll(".step-pill").forEach((el) => {
+        const s = Number(el.dataset.step);
+        el.classList.toggle("on", s === n);
+        el.classList.toggle("done", s < n);
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.querySelectorAll("button.intent").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("button.intent").forEach((b) => b.classList.remove("selected"));
+        btn.classList.add("selected");
+        state.intent = btn.dataset.intent;
+        toStep2.disabled = false;
+      });
+    });
+
+    document.querySelectorAll(".choices").forEach((group) => {
+      const key = group.dataset.key;
+      group.querySelectorAll("button.opt").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          group.querySelectorAll("button.opt").forEach((b) => b.classList.remove("selected"));
+          btn.classList.add("selected");
+          state[key] = btn.dataset.value;
+        });
+      });
+    });
+
+    toStep2.addEventListener("click", () => setStep(2));
+    document.getElementById("back1").addEventListener("click", () => setStep(1));
+    document.getElementById("toStep3").addEventListener("click", () => {
+      renderPlan();
+      setStep(3);
+    });
+    document.getElementById("back2").addEventListener("click", () => setStep(2));
+    document.getElementById("restart").addEventListener("click", () => setStep(1));
+    document.getElementById("again").addEventListener("click", () => setStep(1));
+
+    function step(budget, title, detail, budgetClass) {
+      return { budget, title, detail, budgetClass: budgetClass || "" };
+    }
+
+    function buildPlan() {
+      const { intent, range, ally, rage, foe, slots } = state;
+      const raging = rage === "yes";
+      const canSpell = !raging;
+      const canSpendSlot = slots !== "no";
+      const smiteBoost = foe === "fiend" ? " (+1d8 vs Fiend/Undead)" : "";
+      const warnings = [];
+      const alts = [];
+      let title = intentMeta[intent].label + " turn";
+      let pitch = intentMeta[intent].blurb;
+      const steps = [];
+
+      // Movement first when needed
+      if (range === "far") {
+        steps.push(step("Move", "Close the gap (up to 30 ft)", "Misty Step is a stronger gap-closer if you’re not raging and can spare a Bonus Action + slot.", "move"));
+      } else if (range === "near") {
+        steps.push(step("Move", "Step into melee (or 5 ft adjust)", "Get adjacent before your Attack action so both Extra Attacks connect.", "move"));
+      }
+
+      // Ally emergencies override toward helpful tools
+      const allyCrisis = ally === "down" || (ally === "hurt" && (intent === "support" || intent === "helpful"));
+
+      if (ally === "down" && (intent === "helpful" || intent === "support" || intent === "balanced")) {
+        title = "Emergency rescue";
+        pitch = "Get someone up before you chase damage.";
+        if (raging) {
+          warnings.push("You’re raging — you can’t cast spells. Lay on Hands still works (Bonus Action). Consider ending Rage next turn if you need Moonbeam / Misty Step.");
+        }
+        steps.push(step("Bonus", "Lay on Hands — heal the downed ally", "Touch them; spend from your 25 HP pool. Spend 5 instead to end Poisoned (no HP)."));
+        if (range !== "melee" && canSpell && canSpendSlot) {
+          steps.push(step("Bonus*", "Or Misty Step to reach them first", "If you can’t touch them yet, BA Misty Step (30 ft), then heal next turn — or Dash as your Action this turn.", "ba"));
+        }
+        steps.push(step("Action", "Dodge or Ready", "Protect yourself after the heal, or Ready an attack if a foe approaches the ally."));
+        alts.push({
+          h: "If you must fight this turn",
+          p: "Skip Dodge: Attack once you’re in reach, still use Lay on Hands as Bonus Action.",
+        });
+        return finalize(title, pitch, steps, alts, warnings);
+      }
+
+      // INTENT BRANCHES
+      if (intent === "aggressive") {
+        if (!raging) {
+          steps.push(step("Bonus", "Enter Rage", "Resist B/P/S · +2 damage on Str hits · Adv on Str checks/saves. No spells or Concentration while raging.", "ba"));
+        } else {
+          steps.push(step("Bonus", "Extend Rage only if it would end", "Otherwise leave the Bonus Action unused — Divine Smite is a spell, so it won’t work while raging.", "ba"));
+          warnings.push("While Raging you can’t Divine Smite. For a nova turn, stay calm: Reckless → hit → Bonus Action Smite.");
+        }
+        if (range === "far" && !raging) {
+          warnings.push("Far away + Rage: you only get one Bonus Action — you can’t Misty Step and Rage the same turn. Dash/move in, or Misty now and Rage next turn.");
+        }
+        steps.push(step("Free", "Reckless Attack on your first swing", "Adv on Strength attacks until your next turn; enemies have Adv vs you.", "free"));
+        steps.push(step(
+          "Action",
+          "Attack twice — Longsword (Sap)",
+          "Each hit: 1d8+2 Slashing" + (raging ? " +2 Rage" : " (+2 more once raging)") + ". Sap: target has Disadv on its next attack. Once/turn: Savage Attacker (reroll weapon damage dice)."
+        ));
+        if (!raging && canSpendSlot) {
+          alts.push({
+            h: "Nova variant (no Rage)",
+            p: "Reckless → hit → Bonus Action Divine Smite for 2d8 Radiant" + smiteBoost + ". Use free Smite 1/LR if saving slots.",
+          });
+        }
+        if (foe === "pack") {
+          alts.push({
+            h: "Against a pack (if not raging)",
+            p: "Skip Rage; Action Nature’s Wrath (Channel Divinity) to Restrain several foes (Str DC 13), then mop up next turn.",
+          });
+        }
+      }
+
+      else if (intent === "pressure") {
+        if (foe === "pack" && canSpell) {
+          steps.push(step("Action", "Nature’s Wrath (Channel Divinity)", "Choose creatures within 15 ft; Str save DC 13 or Restrained for 1 minute."));
+          if (!raging) {
+            steps.push(step("Bonus", "Stay flexible — or Misty Step", "Reposition after vines land, or Lay on Hands if someone got clipped.", "ba"));
+          } else {
+            warnings.push("Raging blocks Nature’s Wrath (it’s Magic). Drop Rage next turn or switch to melee Sap pressure.");
+            steps.length = 0;
+            if (range === "far" || range === "near") {
+              steps.push(step("Move", "Get into melee", "", "move"));
+            }
+            steps.push(step("Free", "Reckless Attack", "Adv on Str attacks.", "free"));
+            steps.push(step("Action", "Attack twice — Longsword (Sap)", "Stack Disadv on their next attack; +2 damage if raging."));
+          }
+        } else if (canSpell && !raging && canSpendSlot && foe !== "normal") {
+          steps.push(step("Bonus", "Ensnaring Strike", "Concentration. Next weapon hit: Str DC 13 or Restrained + 1d6 Piercing at start of their turns.", "ba"));
+          steps.push(step("Action", "Attack twice — land the ensnare", "Prioritize the hit that triggers Ensnaring Strike. Sap still applies on Longsword hits."));
+          alts.push({
+            h: "Harder lockdown",
+            p: "Action Moonbeam ( Conc, Con DC 13, 2d10 Radiant) instead — especially vs shapechangers. Bonus Action free for Misty Step / Lay on Hands.",
+          });
+        } else if (!raging) {
+          steps.push(step("Bonus", "Rage (optional) or hold for Smite", "Rage for durability + damage, or stay calm to Smite after a hit.", "ba"));
+          steps.push(step("Free", "Reckless Attack", "Push accuracy for Sap / setup.", "free"));
+          steps.push(step("Action", "Attack twice — Longsword (Sap)", "Make their next attack unreliable. Ring of the Ram (Magic action) if you need Force damage + push instead."));
+        } else {
+          steps.push(step("Free", "Reckless Attack", "", "free"));
+          steps.push(step("Action", "Attack twice — Longsword (Sap)", "While raging: +2 damage, Resist B/P/S. Sap keeps pressure without spells."));
+          steps.push(step("Bonus", "Extend Rage only if it would end", "Otherwise keep BA unused.", "ba"));
+        }
+        if (foe === "mobile" && canSpell && !raging) {
+          alts.push({
+            h: "Runner problem",
+            p: "Misty Step into their path, or Nature’s Wrath / Ensnaring Strike to pin them before they disengage.",
+          });
+        }
+      }
+
+      else if (intent === "balanced") {
+        if (ally === "hurt") {
+          steps.push(step("Bonus", "Lay on Hands on the hurt ally", "Top them up from the 25 pool, then still fight.", "ba"));
+          steps.push(step("Action", "Attack twice — Longsword", "Stay in the fight. Skip Reckless if you’re low HP (enemies would get Adv)."));
+        } else if (raging) {
+          steps.push(step("Free", "Reckless only if you can afford being hit", "Skip it if multiple foes threaten you.", "free"));
+          steps.push(step("Action", "Attack twice — Longsword (Sap)", "+2 rage damage. Hold Bonus Action unless extending Rage."));
+          alts.push({
+            h: "Next turn pivot",
+            p: "Let Rage drop when you need Moonbeam, Misty Step, or Divine Smite.",
+          });
+        } else {
+          steps.push(step("Action", "Attack twice — Longsword (Sap)", "Reliable damage + Sap. Reckless optional."));
+          if (canSpendSlot) {
+            steps.push(step("Bonus", "Divine Smite on a solid hit OR hold", "2d8 Radiant" + smiteBoost + ". Use free 1/LR Smite if you want to conserve slots.", "ba"));
+          } else {
+            steps.push(step("Bonus", "Hold — or Rage if the fight is long", "No slots: Rage for sustain, or Lay on Hands preemptively.", "ba"));
+          }
+          alts.push({
+            h: "Control dip",
+            p: "Swap Action for Nature’s Wrath if several foes are clustered within 15 ft.",
+          });
+        }
+      }
+
+      else if (intent === "support") {
+        if (allyCrisis || ally === "hurt") {
+          steps.push(step("Bonus", "Lay on Hands", "Heal the ally who needs it most.", "ba"));
+        } else if (canSpell && !raging && range === "far") {
+          steps.push(step("Bonus", "Misty Step to the front line", "Arrive where you can intercept or Help.", "ba"));
+        } else if (!raging) {
+          steps.push(step("Bonus", "Divine Sense or hold for heal", "Divine Sense (Channel Divinity) if hunting Celestials/Fiends/Undead; otherwise keep BA for emergency Lay on Hands.", "ba"));
+        }
+
+        if (canSpell && !raging && foe === "pack") {
+          steps.push(step("Action", "Nature’s Wrath — peel for the party", "Restrain key threats (Str DC 13) so allies aren’t swarmed."));
+        } else {
+          steps.push(step("Action", "Attack once or twice — Sap the biggest threat", "Disadv on their next attack protects whoever they’re hitting. Help action instead if an ally needs Adv more than your damage."));
+        }
+        if (raging) {
+          warnings.push("Raging limits your support toolkit (no spells). You’re a durable body-blocker — Sap and soak hits.");
+        }
+        alts.push({
+          h: "Bodyguard mode",
+          p: "Action Dodge while standing between foe and ally; BA Lay on Hands as needed.",
+        });
+      }
+
+      else if (intent === "helpful") {
+        if (raging) {
+          warnings.push("Helpful + Rage is awkward. Prefer Lay on Hands / Dodge / Help until Rage ends.");
+        }
+        if (ally === "hurt" || ally === "down") {
+          steps.push(step("Bonus", "Lay on Hands", ally === "down" ? "Get them conscious from the 25 pool." : "Stabilize their HP from the pool.", "ba"));
+        } else if (canSpell && !raging) {
+          steps.push(step("Bonus", "Misty Step to who needs you", "Or hold BA for a mid-round heal if your table allows Ready less — usually just stay ready.", "ba"));
+        }
+        if (canSpell && !raging && foe === "pack") {
+          steps.push(step("Action", "Nature’s Wrath or Moonbeam", "Create safe space for allies (Restrain cluster or zone control)."));
+        } else {
+          steps.push(step("Action", "Help or Dodge", "Help: give an ally Adv on their next attack. Dodge: make yourself harder to punish while you babysit."));
+        }
+        alts.push({
+          h: "Soft offense",
+          p: "If nobody needs help this second: one Longsword attack with Sap to blunt the enemy’s turn, then Dodge.",
+        });
+        alts.push({
+          h: "Out of combat / downtime",
+          p: "Speak with Animals, Find Steed (1/LR), Prayer of Healing only if prepared and you have 10 minutes.",
+        });
+      }
+
+      // Grapple note
+      if (intent === "aggressive" || intent === "pressure") {
+        alts.push({
+          h: "If you’re grappling someone",
+          p: "Start of turn (free): 1d4 bludgeoning from Unarmed Fighting.",
+        });
+      }
+
+      // Slot caution
+      if (slots === "low") {
+        warnings.push("Low on slots — prefer free Divine Smite (1/LR), Rage, Sap, and Channel Divinity over spending your last slot.");
+      }
+
+      // Default empty guard
+      if (!steps.length) {
+        steps.push(step("Action", "Attack twice — Longsword", "Default reliable turn."));
+      }
+
+      return finalize(title, pitch, steps, alts, warnings);
+    }
+
+    function finalize(title, pitch, steps, alts, warnings) {
+      // Deduplicate move steps if multiple
+      const seen = new Set();
+      const cleaned = [];
+      for (const s of steps) {
+        const key = s.budget + s.title;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        cleaned.push(s);
+      }
+      return { title, pitch, steps: cleaned, alts, warnings };
+    }
+
+    function renderPlan() {
+      const plan = buildPlan();
+      document.getElementById("planTitle").textContent = plan.title;
+      document.getElementById("planTone").textContent = intentMeta[state.intent].label;
+      document.getElementById("planPitch").textContent = plan.pitch;
+
+      const ol = document.getElementById("planSteps");
+      ol.innerHTML = "";
+      plan.steps.forEach((s) => {
+        const li = document.createElement("li");
+        li.innerHTML =
+          `<div class="budget ${s.budgetClass}">${escapeHtml(s.budget)}</div>` +
+          `<div class="step-body"><strong>${escapeHtml(s.title)}</strong>` +
+          (s.detail ? `<span class="detail">${escapeHtml(s.detail)}</span>` : "") +
+          `</div>`;
+        ol.appendChild(li);
+      });
+
+      const alts = document.getElementById("planAlts");
+      alts.innerHTML = "";
+      plan.alts.forEach((a) => {
+        const div = document.createElement("div");
+        div.className = "alt";
+        div.innerHTML = `<h3>${escapeHtml(a.h)}</h3><p>${escapeHtml(a.p)}</p>`;
+        alts.appendChild(div);
+      });
+
+      const warn = document.getElementById("planWarn");
+      if (plan.warnings.length) {
+        warn.hidden = false;
+        warn.textContent = plan.warnings.join(" ");
+      } else {
+        warn.hidden = true;
+        warn.textContent = "";
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+  </script>
+</body>
+</html>

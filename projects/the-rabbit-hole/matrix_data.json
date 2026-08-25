@@ -1,0 +1,236 @@
+{
+  "lighting": {
+    "LIT-001": {
+      "id": "LIT-001",
+      "title": "Carnival tent - dusk",
+      "description": "Faded carnival tent lighting at dusk. Peeling paint reveals flickering practical lights, sparse and melancholic. Warm tungsten, heavy shadows, almost no spotlight on stage."
+    },
+    "LIT-002": {
+      "id": "LIT-002",
+      "title": "Dressing room - backstage",
+      "description": "Grimy dressing room. Single bare bulb over mirror, harsh and unflattering. Yellow-tinted, tired light that emphasizes age and wear."
+    },
+    "LIT-003": {
+      "id": "LIT-003",
+      "title": "Alley - late night",
+      "description": "Dark alley behind theater. Single flickering street light. High contrast shadows, murky pools of light, abandoned atmosphere. The glowing magic item provides only source of hope."
+    },
+    "LIT-004": {
+      "id": "LIT-004",
+      "title": "Magical realm - wonderland phase",
+      "description": "Ethereal, luminous light. Soft glowing platforms, crystalline light sources. Colors vibrant and saturated\u2014warm golds, cool silvers, impossible gradients. Light appears to emanate from the world itself."
+    },
+    "LIT-005": {
+      "id": "LIT-005",
+      "title": "Magical realm - corruption phase",
+      "description": "Light becomes fragmented and chaotic. Harsh neons mixed with deep shadows. Strobing, disorienting. Colors shift from vibrant to acidic and nauseating."
+    },
+    "LIT-006": {
+      "id": "LIT-006",
+      "title": "Magical fingers - descent finale",
+      "description": "Blinding white light from descending fingers. High contrast, almost overexposed. Everything becomes silhouetted and abstract as scrolling accelerates."
+    }
+  },
+  "characters": {
+    "CH-001": {
+      "id": "CH-001",
+      "name": "THE RABBIT",
+      "age": "Timeless (appears middle-aged)",
+      "role": "Protagonist, weary assistant magician",
+      "description": "A white rabbit with intelligent, melancholic eyes. Anthropomorphic\u2014walks, talks, smokes. Wears a tailored miniature magician's coat. World-weary expression hides sharp intellect and dry humor. Observant and skeptical despite his circumstances.",
+      "wardrobe": {
+        "order": "1",
+        "head": "White fur with slightly grayed ears, alert eyes, expressive face",
+        "torso": "Tailored black velvet miniature magician's coat, brass buttons, slightly worn at cuffs",
+        "hands": "White fur with dexterous fingers, capable of holding cigarettes and small objects",
+        "legs": "White fur, standing upright on hind legs",
+        "feet": "White fur, standing position throughout",
+        "carried": "Cigarette (smoking throughout story), later the magical crystalline object"
+      }
+    },
+    "CH-002": {
+      "id": "CH-002",
+      "name": "THE MAGICIAN",
+      "age": "60s",
+      "role": "Aging stage magician, employer and friend",
+      "description": "Tired old magician in a threadbare tuxedo. Once passionate about his craft, now going through motions out of necessity and fading pride. Deep-set tired eyes that still hold a spark of the performer. Moves with mechanical precision\u2014decades of repetition.",
+      "wardrobe": {
+        "order": "1",
+        "head": "Gray hair slicked back, weathered face, hollow cheeks",
+        "torso": "Threadbare black tuxedo with worn silk lapels, white dress shirt yellowed with age, crooked bow tie",
+        "hands": "Wrinkled, liver spots, long-fingered and graceful despite age, usually clutching the top hat",
+        "legs": "Black formal trousers, slightly baggy",
+        "feet": "Scuffed black formal shoes, worn heels",
+        "carried": "The black top hat (his instrument and livelihood)"
+      }
+    },
+    "CH-003": {
+      "id": "CH-003",
+      "name": "TikTok Dancers (Collective)",
+      "age": "Ageless",
+      "role": "Manifestation of algorithmic repetition",
+      "description": "Humanoid figures with impossibly wide smiles, glitching movements. Endlessly repeat the same dance gesture, multiplying exponentially. Their movements are fluid but also jerky\u2014like video glitches. Eyes are vacant and manic.",
+      "wardrobe": {
+        "order": "1",
+        "head": "Featureless or generic, wide smile, blank eyes",
+        "torso": "Generic modern casual wear that blurs and shifts as they multiply",
+        "hands": "Moving in synchronized repetitive gestures",
+        "legs": "Dancing in place, same choreography over and over",
+        "feet": "Gliding and stepping in unison",
+        "carried": "None, absorbed in dance"
+      }
+    },
+    "CH-004": {
+      "id": "CH-004",
+      "name": "Flat Earth Cultists (Collective)",
+      "age": "Ageless",
+      "role": "Manifestation of conspiracy culture",
+      "description": "Shadowy figures arguing passionately about gravity and the shape of the world. Standing at impossible angles\u2014some upside-down, some sideways on tilted surfaces. Their body language is aggressive and defensive.",
+      "wardrobe": {
+        "order": "1",
+        "head": "Obscured, focusing on expressive gestures",
+        "torso": "Casual but slightly off-kilter clothing",
+        "hands": "Pointing, gesturing emphatically",
+        "legs": "Standing at impossible angles",
+        "feet": "Defying gravity",
+        "carried": "Conspiracy boards, maps that don't make sense"
+      }
+    },
+    "CH-005": {
+      "id": "CH-005",
+      "name": "Instagram Influencers (Collective)",
+      "age": "Ageless",
+      "role": "Manifestation of false enthusiasm and performative culture",
+      "description": "Figures with exaggerated expressions of fake enthusiasm. Hair and makeup unnaturally perfect. Movements are stilted and overly expressive. Preparing bizarre, inedible recipes with forced excitement.",
+      "wardrobe": {
+        "order": "1",
+        "head": "Over-styled hair, heavy makeup, frozen smile",
+        "torso": "Fashionable but uncanny clothing, aprons",
+        "hands": "Gesturing dramatically at food",
+        "legs": "Standing at cooking stations",
+        "feet": "Planted and performative",
+        "carried": "Bizarre food combinations, impossible ingredients"
+      }
+    },
+    "CH-006": {
+      "id": "CH-006",
+      "name": "The Magical Fingers",
+      "age": "Timeless",
+      "role": "Manifestation of algorithmic control and endless scrolling",
+      "description": "Enormous, ethereal fingers descending from above like the hand of some digital god. They perform the swiping gesture of endless scrolling with increasing speed. Initially graceful, then frantic and destructive.",
+      "wardrobe": {
+        "order": "1",
+        "head": "N/A - only fingers visible",
+        "torso": "N/A",
+        "hands": "Massive translucent glowing fingers, perfectly manicured",
+        "legs": "N/A",
+        "feet": "N/A",
+        "carried": "The ability to reorganize reality with each swipe"
+      }
+    }
+  },
+  "props": {
+    "PRP-001": {
+      "id": "PRP-001",
+      "title": "The Top Hat",
+      "description": "Black silk top hat, the Magician's primary instrument. Worn, faded, but still carries symbolic weight. Serves as the portal between the real world and the magical realm. Later becomes a symbol of the trap the Rabbit refuses to return to."
+    },
+    "PRP-002": {
+      "id": "PRP-002",
+      "title": "The Crystalline Magic Item",
+      "description": "Small, undefined crystalline object. Glows with soft inner light. Warm to the touch. Hums with energy. Found in the alley. Activates the hat's true magical properties. Mysterious in origin and purpose\u2014the catalyst for everything."
+    },
+    "PRP-003": {
+      "id": "PRP-003",
+      "title": "Silk cloth",
+      "description": "The covering cloth used in the magic trick. Ordinary in the real world, but becomes the veil between realities when combined with the magic item."
+    },
+    "PRP-004": {
+      "id": "PRP-004",
+      "title": "Cigarette",
+      "description": "The Rabbit's constant companion. A symbol of his weary acceptance of his situation. Smoked in the alley, in the dressing room, throughout the story. A moment of autonomy in an otherwise controlled existence."
+    },
+    "PRP-005": {
+      "id": "PRP-005",
+      "title": "Coins on table",
+      "description": "Meager earnings from the show. Barely enough for rent. Visual representation of the Magician and Rabbit's financial desperation."
+    },
+    "PRP-006": {
+      "id": "PRP-006",
+      "title": "Velvet cage",
+      "description": "The Rabbit's stage container. Elegant but confining. A gilded cage that represents the trap of their profession."
+    },
+    "PRP-007": {
+      "id": "PRP-007",
+      "title": "Conspiracy boards",
+      "description": "Covered in strings, circles, and incomprehensible connections. Props in the flat earth zone representing the visual language of conspiracy culture."
+    },
+    "PRP-008": {
+      "id": "PRP-008",
+      "title": "Bizarre food items",
+      "description": "Melting, impossible recipes. Ingredients that shouldn't exist together. Visual representations of algorithmic content generation and influencer culture."
+    },
+    "PRP-009": {
+      "id": "PRP-009",
+      "title": "Bookshop/Coffee shop",
+      "description": "The future refuge of the Rabbit and Magician. A quiet, grounded space away from performance and illusion."
+    }
+  },
+  "locations": {
+    "LOC-001": {
+      "id": "LOC-001",
+      "title": "Faded carnival tent",
+      "description": "Third-rate carnival venue. Peeling paint, broken lights, rickety audience seats scattered sparsely. A stage barely elevated. The smell of decay and failed dreams. Represents the graveyard of entertainment."
+    },
+    "LOC-002": {
+      "id": "LOC-002",
+      "title": "Dressing room backstage",
+      "description": "Grimy, cramped. Bare bulb over cracked mirror. Makeup table with scattered coins. The Magician's and Rabbit's temporary sanctuary where they count their meager earnings and contemplate existence."
+    },
+    "LOC-003": {
+      "id": "LOC-003",
+      "title": "Alley behind theater",
+      "description": "Dark, trash-filled. Two dumpsters. Single flickering street light. Where the Rabbit finds the magic item. Liminal space between the real world and the magical."
+    },
+    "LOC-004": {
+      "id": "LOC-004",
+      "title": "The Wonderland (Magical Realm - Phase 1)",
+      "description": "Vast, Fantasia-scale world of floating platforms, spiraling towers of light and sound. Crystalline formations. Ethereal creatures dancing in geometric patterns. Inviting, beautiful, surreal. Initially appears as escape and wonder."
+    },
+    "LOC-005": {
+      "id": "LOC-005",
+      "title": "The Flat Earth Zone",
+      "description": "Mountains bend impossibly. Horizons tilt at wrong angles. Figures standing upside-down. A zone dedicated to conspiracy and misinformation. Everything is geometrically wrong."
+    },
+    "LOC-006": {
+      "id": "LOC-006",
+      "title": "The TikTok Spiral",
+      "description": "An infinite dance floor where humanoid shapes repeat the same gesture endlessly, faster and faster, multiplying exponentially. A vortex of algorithmic repetition."
+    },
+    "LOC-007": {
+      "id": "LOC-007",
+      "title": "Area 51 District",
+      "description": "Cavernous space filled with conspiracy boards, blinking lights, shadowy figures searching in darkness. Whispered overlapping theories. A manifestation of obsession with hidden truths."
+    },
+    "LOC-008": {
+      "id": "LOC-008",
+      "title": "The Instagram Kitchen",
+      "description": "Grotesque kitchen where influencers prepare bizarre, inedible recipes with forced enthusiasm. Melting food, impossible combinations. A nauseating carnival of false perfection."
+    },
+    "LOC-009": {
+      "id": "LOC-009",
+      "title": "The Vortex of Endless Scrolling",
+      "description": "A blur of images and content. Everything pulls the Rabbit deeper. The world becomes abstract and oppressive. A representation of algorithmic drowning."
+    },
+    "LOC-010": {
+      "id": "LOC-010",
+      "title": "The Escape\u2014Descending Fingers finale",
+      "description": "The entire realm convulses as enormous magical fingers descend, swiping across the world. Everything is reorganized and erased. Fantasia-scale chaos. The Rabbit spots the glowing hat in the distance."
+    },
+    "LOC-011": {
+      "id": "LOC-011",
+      "title": "Quiet bookshop or coffee shop (Epilogue)",
+      "description": "Years later. Small, peaceful refuge away from stages and illusions. Books or coffee setup. The magic item glows faintly on a high shelf. A new life for the Rabbit and Magician."
+    }
+  }
+}

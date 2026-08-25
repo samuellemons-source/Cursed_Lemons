@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Japan · Oct 9–23, 2026 · Tokyo, Hakone, Kyoto, Osaka</title>
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --muted: #5c5c5c;
+      --line: #d8d8d8;
+      --paper: #fbfaf7;
+      --card: #fff;
+      --accent: #2c4a6e;
+      --done: #2d6a4f;
+      --food: #c45c2a;
+      --culture: #2f3f8f;
+      --park: #2f6b4f;
+      --transit: #2f6f76;
+      --shop: #6b3d7a;
+      --sport: #b33a3a;
+      --hotel: #8a6a3b;
+      --fest: #b8860b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.45;
+    }
+    main {
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3.5rem;
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.4rem;
+    }
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 2rem 0 0.6rem;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--line);
+    }
+    h3 { font-size: 1rem; margin: 0 0 0.35rem; }
+    p, li { font-size: 0.98rem; }
+    a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+    a:visited { color: var(--accent); }
+    .lede { color: var(--muted); margin: 0 0 1.25rem; }
+    .facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin: 1rem 0 1.25rem;
+    }
+    @media (max-width: 520px) {
+      .facts { grid-template-columns: 1fr; }
+    }
+    .fact {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.7rem 0.85rem;
+      border-left: 4px solid var(--hotel);
+    }
+    .fact b { display: block; font-size: 1.05rem; }
+    .fact span { color: var(--muted); font-size: 0.82rem; }
+    .note {
+      border-left: 3px solid var(--accent);
+      padding: 0.15rem 0 0.15rem 0.85rem;
+      color: var(--muted);
+      margin: 1rem 0;
+    }
+    .note.warn { border-left-color: var(--fest); }
+    .day {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.9rem 1rem;
+      margin: 0.7rem 0;
+      page-break-inside: avoid;
+    }
+    .meta {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin: 0 0 0.55rem;
+    }
+    .tag {
+      display: inline-block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 0.18rem 0.48rem;
+      border-radius: 999px;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .tag.food { background: var(--food); }
+    .tag.culture { background: var(--culture); }
+    .tag.park { background: var(--park); }
+    .tag.transit { background: var(--transit); }
+    .tag.shop { background: var(--shop); }
+    .tag.sport { background: var(--sport); }
+    .tag.hotel { background: var(--hotel); }
+    .tag.fest { background: var(--fest); }
+    .legend {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.85rem 1rem;
+      margin: 1rem 0 1.25rem;
+    }
+    .legend h2 {
+      margin: 0 0 0.55rem;
+      padding: 0;
+      border: 0;
+      font-size: 0.95rem;
+    }
+    .legend-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.35rem 0.75rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+    }
+    @media (max-width: 520px) {
+      .legend-grid { grid-template-columns: 1fr; }
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .swatch {
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+    .swatch.food { background: var(--food); }
+    .swatch.culture { background: var(--culture); }
+    .swatch.park { background: var(--park); }
+    .swatch.transit { background: var(--transit); }
+    .swatch.shop { background: var(--shop); }
+    .swatch.sport { background: var(--sport); }
+    .swatch.hotel { background: var(--hotel); }
+    .swatch.fest { background: var(--fest); }
+    .graphic {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.85rem 0.75rem 0.6rem;
+      margin: 1rem 0;
+    }
+    .graphic svg { width: 100%; height: auto; display: block; }
+    .graphic .cap {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin: 0.45rem 0 0;
+      text-align: center;
+    }
+    .walk {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--hotel);
+      padding: 0.9rem 1rem;
+      margin: 0.75rem 0;
+      page-break-inside: avoid;
+    }
+    .walk .addr {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin: 0 0 0.55rem;
+    }
+    .walk ul { margin: 0.35rem 0 0; padding-left: 1.1rem; }
+    .walk li { margin: 0.2rem 0; }
+    .walk .mini {
+      display: inline-block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 0.1rem 0.35rem;
+      border-radius: 999px;
+      color: #fff;
+      margin-right: 0.25rem;
+      vertical-align: middle;
+    }
+    .eat { margin: 0.4rem 0 0; }
+    .hint { color: var(--muted); font-size: 0.9rem; margin: 0.35rem 0 0; }
+    .done { color: var(--done); font-weight: 600; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 0.4rem 0.35rem;
+      border-bottom: 1px solid var(--line);
+    }
+    th {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    ul, ol { padding-left: 1.15rem; }
+    footer { color: var(--muted); font-size: 0.8rem; margin-top: 2rem; }
+    @media print {
+      body { background: #fff; }
+      main { padding: 0; max-width: none; }
+      .day, .walk, .legend, .graphic, .fact { border-color: #ccc; }
+      h2 { break-after: avoid; }
+      a { color: inherit; text-decoration: none; }
+      .tag, .mini { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .swatch { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Japan · Tokyo → Hakone → Kyoto → Osaka</h1>
+    <p class="lede">October 9–23, 2026 · 15 days · 14 nights · open-jaw into Tokyo, out of <a href="https://www.kansai-airport.or.jp/en/" target="_blank" rel="noopener noreferrer">Kansai / KIX</a></p>
+
+    <div class="facts">
+      <div class="fact"><b>5 nights Tokyo</b><span>Edition Ginza · Oct 9–14</span></div>
+      <div class="fact"><b>2 nights Hakone</b><span>Gora KARAKU · Oct 14–16</span></div>
+      <div class="fact"><b>4 nights Kyoto</b><span>Machiya Fukune · Oct 16–20</span></div>
+      <div class="fact"><b>3 nights Osaka</b><span>InterContinental Umeda · Oct 20–23</span></div>
+    </div>
+
+    <div class="graphic" aria-label="Hotel spine and night counts">
+      <svg viewBox="0 0 640 118" role="img" xmlns="http://www.w3.org/2000/svg">
+        <title>Hotel spine: Ginza 5, Hakone 2, Kyoto 4, Osaka 3</title>
+        <!-- night bar -->
+        <text x="8" y="16" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" fill="#5c5c5c">14 nights</text>
+        <rect x="8" y="24" width="250" height="14" rx="3" fill="#e8e4dc"/>
+        <rect x="8" y="24" width="89" height="14" fill="#8a6a3b"/>
+        <rect x="97" y="24" width="36" height="14" fill="#2f6f76"/>
+        <rect x="133" y="24" width="71" height="14" fill="#2f6b4f"/>
+        <rect x="204" y="24" width="54" height="14" fill="#2f3f8f"/>
+        <text x="8" y="54" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10" fill="#5c5c5c">Ginza 5 · Hakone 2 · Kyoto 4 · Osaka 3</text>
+        <!-- spine -->
+        <line x1="40" y1="88" x2="600" y2="88" stroke="#d8d8d8" stroke-width="3"/>
+        <circle cx="70" cy="88" r="9" fill="#8a6a3b"/>
+        <circle cx="230" cy="88" r="9" fill="#2f6f76"/>
+        <circle cx="400" cy="88" r="9" fill="#2f6b4f"/>
+        <circle cx="570" cy="88" r="9" fill="#2f3f8f"/>
+        <text x="70" y="78" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="600" fill="#1a1a1a">Ginza</text>
+        <text x="230" y="78" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="600" fill="#1a1a1a">Hakone</text>
+        <text x="400" y="78" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="600" fill="#1a1a1a">Kyoto</text>
+        <text x="570" y="78" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="600" fill="#1a1a1a">Osaka</text>
+        <text x="70" y="110" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="9" fill="#5c5c5c">Oct 9</text>
+        <text x="230" y="110" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="9" fill="#5c5c5c">Oct 14</text>
+        <text x="400" y="110" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="9" fill="#5c5c5c">Oct 16</text>
+        <text x="570" y="110" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="9" fill="#5c5c5c">Oct 20 → KIX 23</text>
+      </svg>
+      <p class="cap">Confirmed hotel spine · leave each city on check-in morning of the next stay</p>
+    </div>
+
+    <div class="legend">
+      <h2>Activity colors</h2>
+      <div class="legend-grid">
+        <div class="legend-item"><span class="swatch food"></span> Dining / food</div>
+        <div class="legend-item"><span class="swatch culture"></span> Museums / culture / show</div>
+        <div class="legend-item"><span class="swatch park"></span> Parks / walking / scenery</div>
+        <div class="legend-item"><span class="swatch transit"></span> Trains / transit days</div>
+        <div class="legend-item"><span class="swatch shop"></span> Shopping (stationery, kitchen)</div>
+        <div class="legend-item"><span class="swatch sport"></span> Baseball / sports</div>
+        <div class="legend-item"><span class="swatch hotel"></span> Hotels / rest / onsen</div>
+        <div class="legend-item"><span class="swatch fest"></span> Festivals</div>
+      </div>
+      <p class="hint" style="margin-top:0.55rem">Day cards use matching pills. Walking lists use the same colors as mini-tags.</p>
+    </div>
+
+    <p class="note">Hotels are confirmed. Prefer Haneda arrival over Narita if the fare is close. Book an afternoon or evening KIX flight on Oct 23 — not morning — because Oct 22 is a long Kyoto festival day trip with a late return to Osaka.</p>
+
+    <p class="note warn"><strong>Oct 22 festivals from Osaka:</strong> Base is InterContinental Osaka (Umeda) for Oct 20–23, so Jidai Matsuri + Kurama Fire Festival are a Kyoto day trip. Doable if energy allows: morning train to Kyoto, procession midday, Eizan up to Kurama for the fires, late return to Umeda. Alternate: skip Kurama and keep a lighter day. Prefer the full festival day if legs hold.</p>
+
+    <h2>Confirmed hotels</h2>
+    <table>
+      <thead><tr><th>Stay</th><th>Nights</th><th>Check-in → out</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><a href="https://www.editionhotels.com/tokyo-ginza/" target="_blank" rel="noopener noreferrer">The Tokyo EDITION, Ginza</a></td>
+          <td>5</td>
+          <td>Fri Oct 9 → Wed Oct 14</td>
+        </tr>
+        <tr>
+          <td><a href="https://global-gora-karaku.orixhotelsandresorts.com/LUC2ORGORA/cdata/luc2orgora_0_jaen.html" target="_blank" rel="noopener noreferrer">Hakone Gora KARAKU</a></td>
+          <td>2</td>
+          <td>Wed Oct 14 → Fri Oct 16</td>
+        </tr>
+        <tr>
+          <td><a href="https://maps.google.com/?q=105-3+Nishirokkakucho+Nakagyo+Kyoto+604-8217" target="_blank" rel="noopener noreferrer">Kyoto Machiya Fukune</a></td>
+          <td>4</td>
+          <td>Fri Oct 16 → Tue Oct 20</td>
+        </tr>
+        <tr>
+          <td><a href="https://icosaka.com/en/" target="_blank" rel="noopener noreferrer">InterContinental Hotel Osaka</a> (Grand Front / Umeda)</td>
+          <td>3</td>
+          <td>Tue Oct 20 → Fri Oct 23 → KIX</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Walking radius by hotel</h2>
+    <p class="lede" style="margin-top:0">Things matching shared interests within roughly 5–20 minutes on foot (Hakone: walk / hotel shuttle / short cable-car hops around Gora).</p>
+
+    <section class="walk">
+      <h3>The Tokyo EDITION, Ginza · 5 nights</h3>
+      <p class="addr">2-8-13 Ginza, Chuo-ku, Tokyo 104-0061 · Chuo-dori / Higashi-Ginza corridor</p>
+      <ul>
+        <li><span class="mini culture">Culture</span> <a href="https://www.kabukiweb.net/theatres/kabukiza/" target="_blank" rel="noopener noreferrer">Kabuki-za</a> — about 5–8 min walk; book one act while based here</li>
+        <li><span class="mini shop">Shop</span> <a href="https://www.ito-ya.co.jp/ext/lang/en/information.html" target="_blank" rel="noopener noreferrer">Itoya Ginza</a> — stationery flagship (two buildings), ~5–10 min</li>
+        <li><span class="mini food">Food</span> Ginza sushi counters + Tsukiji outer market (~15–20 min) for lunch bowls</li>
+        <li><span class="mini food">Food</span> Depachika pastry: Mitsukoshi / Matsuya / Ginza Six food halls — short walks</li>
+        <li><span class="mini park">Park</span> <a href="https://maps.google.com/?q=Hibiya+Park+Tokyo" target="_blank" rel="noopener noreferrer">Hibiya Park</a> or Imperial Palace outer gardens — ~15–20 min west</li>
+        <li><span class="mini park">Walk</span> Back streets between Ginza and Higashi-Ginza (off Chuo-dori) for quieter loops</li>
+        <li><span class="mini sport">Sport</span> Sports bars in Ginza / Yurakucho for Dodgers mornings; stadiums need a train</li>
+        <li><span class="mini transit">Train</span> Ginza / Higashi-Ginza subway → Shinjuku for Odakyu Romancecar on Oct 14</li>
+      </ul>
+    </section>
+
+    <section class="walk">
+      <h3>Hakone Gora KARAKU · 2 nights</h3>
+      <p class="addr">1300-8 Gora, Hakone-machi, Ashigarashimo-gun, Kanagawa 250-0408 · free shuttle ~3–5 min from Gora Station (hilly)</p>
+      <ul>
+        <li><span class="mini hotel">Onsen</span> Private open-air bath in-room + rooftop / reservable baths on property — the stay’s centerpiece</li>
+        <li><span class="mini park">Park</span> <a href="https://www.hakonenavi.jp/gorapark/en/" target="_blank" rel="noopener noreferrer">Hakone Gora Park</a> — roughly 10 min walk / short hop from Gora Station</li>
+        <li><span class="mini culture">Culture</span> <a href="https://www.hakone-oam.or.jp/en/" target="_blank" rel="noopener noreferrer">Hakone Open-Air Museum</a> — one stop toward Chokoku-no-Mori / short walk</li>
+        <li><span class="mini transit">Train</span> Gora Station: Hakone Tozan Railway + cable car toward Sounzan → ropeway / Lake Ashi loop</li>
+        <li><span class="mini food">Food</span> Lean on ryokan dinner/breakfast; one cafe lunch near Gora if you leave the property</li>
+        <li><span class="mini park">Scenery</span> Not dense city walking — plan ropeway / lake / pirate ship as the “day out,” onsen as the evening</li>
+      </ul>
+    </section>
+
+    <section class="walk">
+      <h3>Kyoto Machiya Fukune · 4 nights</h3>
+      <p class="addr">105-3 Nishirokkakucho, Nakagyo-ku, Kyoto 604-8217 · central Nakagyo near Horikawa / Rokkaku</p>
+      <ul>
+        <li><span class="mini food">Food</span> <a href="https://maps.google.com/?q=Nishiki+Market+Kyoto" target="_blank" rel="noopener noreferrer">Nishiki Market</a> — ~10 min; snacks, knives at Aritsugu</li>
+        <li><span class="mini park">Walk</span> <a href="https://maps.google.com/?q=Pontocho+Kyoto" target="_blank" rel="noopener noreferrer">Pontocho</a> / Kiyamachi alleys — ~10–15 min for evening grazing</li>
+        <li><span class="mini culture">Culture</span> Kyoto International Manga Museum / Karasuma corridor — short walk or one subway stop</li>
+        <li><span class="mini shop">Shop</span> Stationery and kitchen tools around Nishiki / Teramachi covered streets</li>
+        <li><span class="mini park">Park</span> Kyoto Imperial Palace gardens — ~15–20 min north on foot or quick bus/subway</li>
+        <li><span class="mini food">Food</span> Neighborhood cafes for reading; bakery breakfasts before Arashiyama / Fushimi days</li>
+        <li><span class="mini transit">Train</span> Easy subway / bus to Kyoto Station (Sagano, Shinkansen corridor) and Keihan for Fushimi</li>
+      </ul>
+    </section>
+
+    <section class="walk">
+      <h3>InterContinental Hotel Osaka · 3 nights</h3>
+      <p class="addr">3-60 Ofuka-cho, Kita-ku, Osaka 530-0011 · Grand Front Osaka North Building Tower C · <strong>Umeda</strong> (not Temmabashi / castle)</p>
+      <ul>
+        <li><span class="mini transit">Train</span> ~5 min walk to JR Osaka / Umeda / Hankyu — perfect for Kyoto day trips and Haruka via Shin-Osaka</li>
+        <li><span class="mini food">Food</span> Grand Front + Umeda depachika / izakaya density — okonomiyaki, kushikatsu, ramen without a long hop</li>
+        <li><span class="mini food">Food</span> Light Dotonbori is a short subway ride; prefer neighborhood Umeda food most nights</li>
+        <li><span class="mini park">Walk</span> Umeda Sky Building / floating garden (~10–15 min) for a view; Kita back streets off the malls</li>
+        <li><span class="mini shop">Shop</span> Hankyu / Hanshin / Grand Front for pastry, kitchen gadgets, stationery browsing</li>
+        <li><span class="mini sport">Sport</span> Umeda sports bars for MLB mornings; live NPB is elsewhere if schedules align</li>
+        <li><span class="mini transit">KIX</span> Limousine bus stops near Umeda / Hankyu, or JR Haruka from Shin-Osaka (~10 min local from Osaka Sta.)</li>
+      </ul>
+    </section>
+
+    <h2>Money &amp; trains</h2>
+    <ul>
+      <li><strong>Cash:</strong> Pull yen at a <strong>7-Eleven ATM</strong> with a US debit card (most reliable for American cards).</li>
+      <li><strong>Translate:</strong> Google Translate camera mode before you land.</li>
+      <li><strong>Walk more than the app suggests.</strong> Neighborhood streets between stations are often the point.</li>
+      <li><strong>Ratings:</strong> Tabelog over Google; a 3.5 there can still be excellent.</li>
+      <li><strong>Konbini:</strong> Onigiri, ATM, tickets. Carry trash — public bins are scarce.</li>
+      <li><strong>Tickets:</strong> Suica/Pasmo for cities. Odakyu <a href="https://odakyu-global.com/passes/romancecar/" target="_blank" rel="noopener noreferrer">Romancecar</a> Shinjuku → Hakone-Yumoto Oct 14. Shinkansen Odawara → Kyoto Oct 16 via <a href="https://smart-ex.jp/en/" target="_blank" rel="noopener noreferrer">SmartEX</a>. Kyoto ↔ Osaka ordinary JR/Hankyu/Keihan. KIX Oct 23: Haruka from Shin-Osaka or limousine bus from Umeda.</li>
+      <li><strong>Luggage:</strong> Forward Tokyo → Kyoto (or Osaka) with Yamato while overnighting Hakone with a small bag — or take bags on the Romancecar. Forward to KIX before departure if helpful.</li>
+    </ul>
+
+    <h2>Hakone notes</h2>
+    <ul>
+      <li>Luxury ryokan-style stay in Gora — midweek Oct 14–16 is a good window.</li>
+      <li>Romancecar Shinjuku → Hakone-Yumoto, then Tozan Railway to Gora + hotel shuttle.</li>
+      <li>Hakone Free Pass (Odakyu) or Romancecar reserved seat + local pay-as-you-go.</li>
+      <li><strong>Onsen etiquette:</strong> Wash at the stools before entering; no swimsuits in traditional baths; hair up / towel off the water; quiet voices. Tattoos: confirm with KARAKU — in-room open-air baths solve most issues.</li>
+    </ul>
+
+    <h2>From a friend’s notes</h2>
+    <p class="lede" style="margin-top:0">Curated for museums, parks, cafes, pastry, stationery, kitchen tools, scenic trains, kabuki, sushi/ramen, graffiti, off-path walks, and baseball.</p>
+    <ul>
+      <li><strong>Tokyo add-ons:</strong> Sangenjaya alleys, Jimbocho books/udon, Kichijoji or Monzen-Nakacho for craft / standing sake.</li>
+      <li><strong>Reinforced:</strong> Edition Ginza = Kabuki-za + Itoya on foot. Yanaka with cash. Kappabashi off Asakusa’s main drag.</li>
+      <li><strong>Kyoto:</strong> Nakagyo base for Nishiki / Pontocho. Kiyomizu + yatsuhashi + Gion wooden streets on a buffer or Oct 21 from Osaka.</li>
+      <li><strong>Osaka:</strong> Neighborhood izakaya over a full Dotonbori marathon; one neon walk is enough.</li>
+      <li><strong>Skip:</strong> Harajuku main drag, TeamLab queues, Golden Pavilion as a must, Hiroshima day trip, Michelin/Jiro chase.</li>
+    </ul>
+
+    <h2>Day by day</h2>
+
+    <article class="day">
+      <div class="meta">Fri Oct 9 · Tokyo · Edition Ginza</div>
+      <div class="tags">
+        <span class="tag hotel">Hotel</span>
+        <span class="tag transit">Transit</span>
+        <span class="tag food">Food</span>
+        <span class="tag park">Walk</span>
+      </div>
+      <h3>Arrive, settle, first bowls</h3>
+      <p>Land, 7-Eleven ATM, check in at the Edition. Light Ginza / Tsukiji-outer walk only. Kabuki-za is dark today.</p>
+      <p class="eat"><strong>Eat:</strong> Ramen for dinner. Onigiri or depachika pastry if late.</p>
+      <p class="hint">Dodgers Game 5 (if any) = Japan morning Oct 10, not tonight.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Sat Oct 10 · Tokyo</div>
+      <div class="tags">
+        <span class="tag park">Walk</span>
+        <span class="tag culture">Culture</span>
+        <span class="tag sport">Baseball</span>
+        <span class="tag food">Food</span>
+      </div>
+      <h3>Koenji graffiti + baseball if available</h3>
+      <p>Early <a href="https://maps.google.com/?q=Koenji+Tokyo" target="_blank" rel="noopener noreferrer">Koenji</a> murals, then a <a href="https://www.airbnb.com/experiences/6741341" target="_blank" rel="noopener noreferrer">street-art walking tour</a>. Night: <a href="https://npb.jp/event/2026/" target="_blank" rel="noopener noreferrer">Climax Series</a> First Stage if a Tokyo/Yokohama venue.</p>
+      <p class="eat"><strong>Eat:</strong> Koenji lunch. Yakitori after the game.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Sun Oct 11 · Tokyo</div>
+      <div class="tags">
+        <span class="tag park">Park</span>
+        <span class="tag culture">Museum</span>
+        <span class="tag food">Food</span>
+      </div>
+      <h3>Ueno park, museum, Yanaka cafes</h3>
+      <p><a href="https://maps.google.com/?q=Ueno+Park+Tokyo" target="_blank" rel="noopener noreferrer">Ueno Park</a>, <a href="https://www.tnm.jp/?lang=en" target="_blank" rel="noopener noreferrer">Tokyo National Museum</a>, then Yanaka / Nezu / Sendagi kissaten.</p>
+      <p class="eat"><strong>Eat:</strong> Park pastry; sushi dinner in the Ueno–Ginza corridor.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Mon Oct 12 · Tokyo · holiday</div>
+      <div class="tags">
+        <span class="tag transit">Train</span>
+        <span class="tag park">Scenery</span>
+        <span class="tag sport">Dodgers</span>
+        <span class="tag food">Food</span>
+      </div>
+      <h3>Enoden Kamakura — or Ginza / parks</h3>
+      <p><a href="https://www.enoden.co.jp/en/" target="_blank" rel="noopener noreferrer">Enoden</a> coastal streetcar, Great Buddha, Hase cafes — or stay soft near the hotel (Hibiya / palace gardens).</p>
+      <p class="eat"><strong>Eat:</strong> Kamakura pastry/seafood or Ginza depachika.</p>
+      <p class="hint">NLCS Game 1 morning if Dodgers advance — sports-bar breakfast near Ginza/Yurakucho.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Tue Oct 13 · Tokyo · Kabuki day</div>
+      <div class="tags">
+        <span class="tag shop">Shopping</span>
+        <span class="tag culture">Show</span>
+        <span class="tag food">Food</span>
+      </div>
+      <h3>Kappabashi, stationery, Kabuki-za</h3>
+      <p><a href="https://maps.google.com/?q=Kappabashi+Tokyo" target="_blank" rel="noopener noreferrer">Kappabashi</a> knives/tools; Kakimori and/or Itoya Ginza. <strong>Prioritize <a href="https://www.kabukiweb.net/theatres/kabukiza/" target="_blank" rel="noopener noreferrer">Kabuki-za</a></strong> while at the Edition (dark Oct 9; program through Oct 20).</p>
+      <p class="eat"><strong>Eat:</strong> Tempura near Asakusa or Ginza sushi around the show.</p>
+      <p class="hint">Last easy Tokyo baseball window before Hakone — only if energy.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Wed Oct 14 · Tokyo → Hakone · Gora KARAKU</div>
+      <div class="tags">
+        <span class="tag transit">Romancecar</span>
+        <span class="tag hotel">Onsen</span>
+        <span class="tag food">Food</span>
+      </div>
+      <h3>Romancecar west, onsen evening</h3>
+      <p>Check out. Odakyu Romancecar Shinjuku → Hakone-Yumoto → Tozan to Gora → KARAKU. Quiet onsen night — skip Tokyo baseball.</p>
+      <p class="eat"><strong>Eat:</strong> Ryokan dinner if included.</p>
+      <p class="hint">Forward luggage Tokyo → Kyoto/Osaka, or travel with bags.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Thu Oct 15 · Hakone</div>
+      <div class="tags">
+        <span class="tag park">Scenery</span>
+        <span class="tag transit">Ropeway</span>
+        <span class="tag hotel">Onsen</span>
+        <span class="tag food">Food</span>
+      </div>
+      <h3>Ropeway, lake, or slow onsen day</h3>
+      <p>Classic loop: cable car → ropeway → Lake Ashi pirate ship — or stay soft at the ryokan with a Gora Park / cafe outing.</p>
+      <p class="eat"><strong>Eat:</strong> Cafe lunch with a view; ryokan dinner.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Fri Oct 16 · Hakone → Kyoto · Machiya Fukune</div>
+      <div class="tags">
+        <span class="tag transit">Shinkansen</span>
+        <span class="tag hotel">Hotel</span>
+        <span class="tag park">Walk</span>
+        <span class="tag food">Food</span>
+      </div>
+      <h3>Down the mountain, settle Nakagyo</h3>
+      <p>Hakone-Yumoto → Odawara → Shinkansen to Kyoto. Check in at Machiya Fukune. Short Nishiki / Pontocho evening — no temple marathon.</p>
+      <p class="eat"><strong>Eat:</strong> Ekiben; Kyoto obanzai or Pontocho grazing.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Sat Oct 17 · Kyoto</div>
+      <div class="tags">
+        <span class="tag transit">Scenic train</span>
+        <span class="tag park">Park</span>
+        <span class="tag food">Food</span>
+      </div>
+      <h3>Arashiyama + Sagano Romantic Train</h3>
+      <p>Arashiyama early, <a href="https://www.sagano-kanko.co.jp/en/" target="_blank" rel="noopener noreferrer">Sagano Romantic Train</a> through the Hozu gorge. Gardens over bamboo photo lines. Optional dusk Fushimi Inari.</p>
+      <p class="eat"><strong>Eat:</strong> Yudofu / river lunch; Kyoto ramen evening.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Sun Oct 18 · Kyoto</div>
+      <div class="tags">
+        <span class="tag culture">Museum</span>
+        <span class="tag park">Walk</span>
+        <span class="tag shop">Shopping</span>
+        <span class="tag food">Food</span>
+      </div>
+      <h3>Museum, Philosopher’s Path, cafe</h3>
+      <p><a href="https://www.kyohaku.go.jp/eng/" target="_blank" rel="noopener noreferrer">Kyoto National Museum</a>, Philosopher’s Path, Demachiyanagi / Okazaki cafe. Nishiki Aritsugu if still wanting a knife.</p>
+      <p class="eat"><strong>Eat:</strong> Pastry breakfast; soba or sushi dinner.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Mon Oct 19 · Kyoto</div>
+      <div class="tags">
+        <span class="tag park">Walk</span>
+        <span class="tag food">Food</span>
+        <span class="tag culture">Culture</span>
+      </div>
+      <h3>Fushimi sake alleys</h3>
+      <p>Fushimi brewery canals and tasting rooms — different Fushimi from the shrine gates. Or Kiyomizu–Gion if you’d rather save sake.</p>
+      <p class="eat"><strong>Eat:</strong> Small plates with sake.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Tue Oct 20 · Kyoto → Osaka · InterContinental Umeda</div>
+      <div class="tags">
+        <span class="tag transit">Transit</span>
+        <span class="tag hotel">Hotel</span>
+        <span class="tag food">Food</span>
+      </div>
+      <h3>Short hop west, Osaka food night</h3>
+      <p>JR / Hankyu / Keihan to Osaka (~15–45 min). Check in at InterContinental (Grand Front / Umeda). Neighborhood okonomiyaki / izakaya; light Dotonbori only if you want neon once.</p>
+      <p class="eat"><strong>Eat:</strong> Osaka savory night.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Wed Oct 21 · Osaka buffer</div>
+      <div class="tags">
+        <span class="tag park">Park</span>
+        <span class="tag transit">Day trip</span>
+        <span class="tag food">Food</span>
+      </div>
+      <h3>Parks &amp; cafes — or Nara — or Kyoto Kiyomizu</h3>
+      <p>Soft: Umeda Sky / cafe reading. Day trip: Nara. Kyoto option: Kiyomizu + Gion, return to Umeda for sleep before festival day.</p>
+      <p class="eat"><strong>Eat:</strong> Bakery crawl or tonkatsu.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Thu Oct 22 · Osaka base · Kyoto day trip</div>
+      <div class="tags">
+        <span class="tag fest">Festival</span>
+        <span class="tag transit">Train</span>
+        <span class="tag park">Scenery</span>
+        <span class="tag food">Food</span>
+      </div>
+      <h3>Jidai Matsuri + Kurama Fire Festival</h3>
+      <p><strong>Recommended:</strong> Early Osaka → Kyoto. Jidai Matsuri (~noon–3pm, Palace → Heian Shrine). Evening Eizan to Kurama for the Fire Festival. Late return to InterContinental Umeda.</p>
+      <p><strong>Lighter:</strong> Jidai only, or skip Kurama.</p>
+      <p class="eat"><strong>Eat:</strong> Early heavy meal before Kurama. No tight dinner reservation.</p>
+      <p class="hint">Do not book a morning KIX flight on the 23rd.</p>
+    </article>
+
+    <article class="day">
+      <div class="meta">Fri Oct 23 · Osaka → KIX</div>
+      <div class="tags">
+        <span class="tag transit">Airport</span>
+        <span class="tag hotel">Checkout</span>
+        <span class="tag food">Food</span>
+      </div>
+      <h3>Haruka or bus to KIX, fly home</h3>
+      <p>Haruka from Shin-Osaka (~50 min) or limousine bus from Umeda. Airport 3 hours before long-haul. Afternoon/evening departure only.</p>
+      <p class="eat"><strong>Eat:</strong> Station/hotel pastry, or after security.</p>
+    </article>
+
+    <h2>How to eat</h2>
+    <p>Cap ramen at about four bowls. One proper sushi sit-down in Ginza, then sushi as lunch. Kyoto: kaiseki, tofu, obanzai, pastry. Osaka: savory — okonomiyaki, kushikatsu, izakaya. Use Tabelog as a tie-breaker.</p>
+    <p class="note">Dodgers US night games = Japan morning (~8–11am). LCS ~Oct 12–20 Japan time if they advance. World Series Game 1 is Oct 23 US night — after you fly.</p>
+
+    <h2>Where it all lands</h2>
+    <table>
+      <thead><tr><th>Want</th><th>When</th></tr></thead>
+      <tbody>
+        <tr><td>Museums / show</td><td>Tokyo National Museum (11), Kabuki-za (13), Kyoto National Museum (18)</td></tr>
+        <tr><td>Parks / scenery</td><td>Ueno (11), Kamakura or Ginza parks (12), Hakone loop (15), Arashiyama (17), Philosopher’s Path (18)</td></tr>
+        <tr><td>Scenic trains</td><td>Enoden (12), Romancecar (14), Hakone ropeway (15), Sagano (17), Eizan (22)</td></tr>
+        <tr><td>Stationery / kitchen</td><td>Itoya + Kappabashi (13), Nishiki Aritsugu (18)</td></tr>
+        <tr><td>Baseball</td><td>Climax Series Oct 10–13 while in Tokyo</td></tr>
+        <tr><td>Festivals</td><td>Jidai + Kurama day trip from Osaka (22)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Book next</h2>
+    <ol>
+      <li><span class="done">Done — hotels confirmed:</span> Edition Ginza Oct 9–14 · Gora KARAKU Oct 14–16 · Machiya Fukune Oct 16–20 · InterContinental Osaka (Umeda) Oct 20–23.</li>
+      <li>Open-jaw flights: Haneda (preferred) or Narita Oct 9 → KIX Oct 23 afternoon/evening.</li>
+      <li>Airport transfers; Haruka Shin-Osaka → KIX or Umeda limousine bus Oct 23.</li>
+      <li>Romancecar Shinjuku → Hakone-Yumoto, Wed Oct 14.</li>
+      <li>Shinkansen Odawara → Kyoto, Fri Oct 16 (SmartEX).</li>
+      <li>Yamato luggage forward Tokyo → Kyoto/Osaka around Oct 14; optional → KIX before Oct 23.</li>
+      <li>Kabuki-za tickets on sale Mon Sep 14 — one act Oct 10–13 at the Edition.</li>
+      <li>Sagano Romantic Train Sat Oct 17.</li>
+      <li>Hakone Free Pass or Romancecar + local transit.</li>
+      <li>Climax Series tickets if Kanto hosts Oct 10–13.</li>
+      <li>Koenji street-art tour Sat Oct 10 morning.</li>
+      <li>One Ginza sushi reservation Oct 11 or 13.</li>
+      <li>Sports bar for MLB mornings.</li>
+    </ol>
+
+    <h2>Pack</h2>
+    <p>Layers, light jacket, compact umbrella, broken-in shoes, onsen bag for Hakone. Low 70s °F possible at noon; Kurama night on the 22nd is cooler. Keep Oct 21 as energy slack.</p>
+
+    <footer>
+      Shareable draft · hotels confirmed · recheck events closer to travel · print-friendly colors · NPB / MLB / Kabuki-za calendars online.
+    </footer>
+  </main>
+</body>
+</html>

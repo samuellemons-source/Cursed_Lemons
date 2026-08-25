@@ -1,0 +1,3 @@
+Every project the tracker manages lives in a subdirectory here. Empty on
+first install — create your first project through the app's `+ New project`
+button, or POST to `/api/project/new`.

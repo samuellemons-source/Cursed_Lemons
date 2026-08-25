@@ -1,0 +1,9 @@
+.env
+app_state.json
+projects/*/undo.json
+projects/*/ingest_undo.json
+projects/*/ingest_proposal.json
+projects/*/__pycache__/
+__pycache__/
+*.pyc
+.DS_Store

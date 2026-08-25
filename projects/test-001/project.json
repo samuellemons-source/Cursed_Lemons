@@ -1,0 +1,44 @@
+{
+  "slug": "test-001",
+  "title": "test 001",
+  "subtitle": "",
+  "source_note": "SOURCE_STORY.md (extracted into the production matrix)",
+  "outputs": {
+    "markdown": "SHOW_BIBLE_PROMPTS.md",
+    "brief": "REVISION_BRIEF.md",
+    "canvas": null
+  },
+  "doctrine": {},
+  "sections": [
+    {
+      "collection": "T1_SOULS",
+      "short": "T1 Souls",
+      "md_title": "T1 · CHARACTER SOULS — mint every Higgsfield Element from these",
+      "blurb": "One chest-up portrait per named character."
+    },
+    {
+      "collection": "T1F_FACTIONS",
+      "short": "T1F Factions",
+      "md_title": "T1F · CROWD FACTIONS — one styling sheet per group",
+      "blurb": "Group plate per faction, six to eight figures."
+    },
+    {
+      "collection": "T2_PLATES",
+      "short": "T2 Plates",
+      "md_title": "T2 · LOCATION PLATES — one master per location × state",
+      "blurb": "Establishing plate for every location state in the matrix."
+    },
+    {
+      "collection": "T5_PROPS",
+      "short": "T5 Props",
+      "md_title": "T5 · HERO PROPS — one product sheet per hero prop",
+      "blurb": "Product-style sheet per hero prop."
+    },
+    {
+      "collection": "LAYOUTS",
+      "short": "Technical Layout Format Headers",
+      "md_title": "TECHNICAL LAYOUT FORMAT HEADERS — house standards, no subject attached",
+      "blurb": "Reusable technical layouts with the subject left blank."
+    }
+  ]
+}

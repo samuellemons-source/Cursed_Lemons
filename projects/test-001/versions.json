@@ -1,0 +1,62 @@
+{
+ "layout/three_up": {
+  "version": 1,
+  "hash": "d11b01c568b1",
+  "updated": "2026-08-10",
+  "history": [
+   {
+    "v": 1,
+    "hash": "d11b01c568b1",
+    "date": "2026-08-10"
+   }
+  ]
+ },
+ "layout/turnaround": {
+  "version": 1,
+  "hash": "b6cb93051c53",
+  "updated": "2026-08-10",
+  "history": [
+   {
+    "v": 1,
+    "hash": "b6cb93051c53",
+    "date": "2026-08-10"
+   }
+  ]
+ },
+ "layout/flatlay": {
+  "version": 1,
+  "hash": "49988762ffaa",
+  "updated": "2026-08-10",
+  "history": [
+   {
+    "v": 1,
+    "hash": "49988762ffaa",
+    "date": "2026-08-10"
+   }
+  ]
+ },
+ "layout/upper": {
+  "version": 1,
+  "hash": "ec0ab6341a69",
+  "updated": "2026-08-10",
+  "history": [
+   {
+    "v": 1,
+    "hash": "ec0ab6341a69",
+    "date": "2026-08-10"
+   }
+  ]
+ },
+ "layout/macro": {
+  "version": 1,
+  "hash": "6937f28a754c",
+  "updated": "2026-08-10",
+  "history": [
+   {
+    "v": 1,
+    "hash": "6937f28a754c",
+    "date": "2026-08-10"
+   }
+  ]
+ }
+}

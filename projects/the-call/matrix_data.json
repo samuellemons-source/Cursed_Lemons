@@ -1,0 +1,129 @@
+{
+  "lighting": {
+    "LIT-001": {
+      "id": "LIT-001",
+      "title": "Late evening apartment ambient",
+      "description": "Warm tungsten apartment lighting, late evening natural window light fading to dusk. Intimate, warm-toned practical lamps. Natural evening light from apartment windows."
+    },
+    "LIT-002": {
+      "id": "LIT-002",
+      "title": "Festival projection screening light",
+      "description": "Dark theater lighting during film projection. Soft key from the projected image on Maya's face. Intimate single-source lighting from the screen."
+    },
+    "LIT-003": {
+      "id": "LIT-003",
+      "title": "Film set production lighting",
+      "description": "Professional film production lighting setup. Key, fill, and practical lighting on set. Bright, controlled, cinematic day-for-night lighting scheme."
+    }
+  },
+  "characters": {
+    "CH-001": {
+      "id": "CH-001",
+      "name": "MAYA",
+      "age": "28",
+      "role": "Cinematographer, protagonist",
+      "description": "28-year-old cinematographer with worn film school loans and dreams bigger than her day job. Driven, ambitious, anxious but hopeful.",
+      "wardrobe": {
+        "order": "1",
+        "head": "Dark wavy hair, shoulder-length, naturally textured",
+        "torso": "Casual home wear - soft sweater or t-shirt, well-worn but clean",
+        "hands": "Bare or simple watch",
+        "legs": "Comfortable jeans or lounge pants",
+        "feet": "Socks or slippers",
+        "carried": "Laptop computer"
+      }
+    },
+    "CH-002": {
+      "id": "CH-002",
+      "name": "JAMES",
+      "age": "32",
+      "role": "Partner, supportive companion",
+      "description": "32-year-old partner, supportive but pragmatic. Grounded, steady presence. Brings coffee and emotional support.",
+      "wardrobe": {
+        "order": "1",
+        "head": "Short dark hair, neat",
+        "torso": "Casual comfortable shirt",
+        "hands": "Bare hands",
+        "legs": "Comfortable home pants",
+        "feet": "Socks or shoes",
+        "carried": "Coffee mug"
+      }
+    },
+    "CH-003": {
+      "id": "CH-003",
+      "name": "CAROL",
+      "age": "60s",
+      "role": "Mother",
+      "description": "Maya's mother, proud and emotional. Tears streaming as she hears the news of the win.",
+      "wardrobe": {
+        "order": "1",
+        "head": "Gray hair, styled",
+        "torso": "Casual home wear",
+        "hands": "Bare or simple jewelry",
+        "legs": "Comfortable pants",
+        "feet": "House shoes",
+        "carried": "None"
+      }
+    },
+    "CH-004": {
+      "id": "CH-004",
+      "name": "DAVID",
+      "age": "55",
+      "role": "Mentor, veteran DP",
+      "description": "55-year-old veteran cinematographer and mentor who believed in Maya when she was shooting wedding videos. Experienced, wise, supportive.",
+      "wardrobe": {
+        "order": "1",
+        "head": "Gray hair, professional",
+        "torso": "Professional filmmaker wear",
+        "hands": "Bare hands",
+        "legs": "Professional pants",
+        "feet": "Professional shoes",
+        "carried": "None"
+      }
+    }
+  },
+  "props": {
+    "PRP-001": {
+      "id": "PRP-001",
+      "title": "Laptop",
+      "description": "Maya's laptop for checking festival results. Modern professional equipment, worn from use."
+    },
+    "PRP-002": {
+      "id": "PRP-002",
+      "title": "Email notification",
+      "description": "The email announcement of the festival win. Catalyst moment for the entire story."
+    },
+    "PRP-003": {
+      "id": "PRP-003",
+      "title": "Coffee",
+      "description": "Coffee brought by James. Warm beverage in ceramic mug."
+    },
+    "PRP-004": {
+      "id": "PRP-004",
+      "title": "Camera equipment",
+      "description": "Professional camera gear used to shoot the award-winning film. 16mm camera and accessories."
+    },
+    "PRP-005": {
+      "id": "PRP-005",
+      "title": "Director's chair",
+      "description": "The director's chair on a professional film set. Canvas and wood, bearing Maya's name."
+    }
+  },
+  "locations": {
+    "LOC-001": {
+      "id": "LOC-001",
+      "title": "Small apartment",
+      "description": "Late evening in a small apartment. Intimate living space where the story opens and climactic moment occurs. Worn, lived-in, with practical furnishings, desk, laptop area."
+    },
+    "LOC-002": {
+      "id": "LOC-002",
+      "title": "Film festival venue",
+      "description": "International film festival screening venue. Professional projection space where the film is shown to an audience of filmmakers."
+    },
+    "LOC-003": {
+      "id": "LOC-003",
+      "title": "Film production set",
+      "description": "A real film production set with crew, cameras, monitors, and full production infrastructure. Professional, busy, controlled environment with director's chair."
+    }
+  }
+}
